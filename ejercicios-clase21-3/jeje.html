@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo de estilos ejercicio</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1#titulo {
+            color: blue;
+            background: linear-gradient(to right, blue, green);
+        }
+
+        h2#subtitulo {
+            color: orange;
+            background: linear-gradient(to right, blue, orange);
+        }
+
+        .destacado {
+            color: red;
+            font-weight: bold;
+        }
+
+        .especial {
+            color: green;
+            font-style: italic;
+        }
+
+        a {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        span.subrayado {
+            text-decoration: underline;
+            color: orange;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        caption {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: darkblue;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        td strong {
+            color: red;
+        }
+
+        td em {
+            color: purple;
+        }
+
+        #adicional span {
+            color: teal;
+        }
+
+        #especial {
+            color: darkorange;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Lorem ipsum dolor sit amet</h1>
+    <p>Nulla pretium. Sed tempus nunc vitae neque. <strong>Suspendisse
+    gravida</strong>, metus a scelerisque sollicitudin, lacus velit
+    ultricies nisl, nonummy tempus neque diam quis felis. <span
+    class="destacado">Etiam sagittis tortor</span> sed arcu sagittis tristique.</p>
+
+    <h2 id="subtitulo">Aliquam tincidunt, sem eget volutpat porta</h2>
+    <p>Vivamus velit dui, placerat vel, feugiat in, ornare et, urna. <a
+    href="#">Aenean turpis metus, <em>aliquam non</em>, <span class="subrayado">tristique in</span></a>, pretium
+    varius, sapien. Proin vitae nisi. Suspendisse <span class="especial">porttitor
+    purus ac elit</span>. Suspendisse eleifend odio at dui. In in elit sed metus
+    pretium elementum.</p>
+
+    <table summary="Descripción de la tabla y su contenido">
+        <caption>Título de la tabla</caption>
+        <thead>
+            <tr>
+                <th scope="col">Título columna 1</th>
+                <th scope="col">Título columna 2</th>
+                <th scope="col">Título columna 3</th>
+                <th scope="col">Título columna 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Título fila 1</th>
+                <td><strong>Donec purus ipsum</strong></td>
+                <td><em>Curabitur blandit</em></td>
+                <td><span class="especial">Aliquam non</span></td>
+            </tr>
+            <tr>
+                <th scope="row">Título fila 2</th>
+                <td><strong>Donec purus ipsum</strong></td>
+                <td><em>Curabitur blandit</em></td>
+                <td><span class="especial">Aliquam non</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="adicional">
+        <p>Donec purus ipsum, posuere id, venenatis at, <span>placerat ac, lorem</span>.
+        Curabitur blandit, eros sed gravida aliquet, risus justo
+        porta lorem, ut mollis lectus tortor in orci. Pellentesque nec augue.</p>
+
+        <p>Fusce nec felis eu diam pretium adipiscing. <span id="especial">Nunc elit
+        elit, vehicula vulputate</span>, venenatis in,
+        posuere id, lorem. Etiam sagittis, tellus in ultrices accumsan, diam nisi feugiat
+        ante, eu congue magna mi non nisl.</p>
+
+        <p>Vivamus ultrices aliquet augue. <a href="#">Donec arcu pede, pretium
+        vitae</a>, rutrum aliquet, tincidunt blandit, pede.
+        Aliquam in nisi. Suspendisse volutpat. Nulla facilisi. Ut ullamcorper nisi quis
+        mi.</p>
+    </div>
+</body>
+</html>

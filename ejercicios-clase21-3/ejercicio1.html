@@ -1,0 +1,33 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+        <head> <meta charset="UTF-8" />
+        <title>Ejemplo de estilos selector descendente y el selector de hijos</title>
+        <style type="text/css">
+            p a { color: red; } /* Selector descendente */ /* más específico */
+            p span a { color: rgb(255, 145, 0); } /* Selector descendente */ /* menos específico */      p > a { color: rgb(62, 194, 106); } /* Selector de hijos */ /* más específico */
+            p > span { color:rgb(218, 42, 218); } /* Selector de hijos */ /* menos específico */
+        </style>
+    </head>
+    <body>
+        <section>
+            <p><a href="#">Enlace1</a></p>
+            <p><span><a href="#">Enlace2</a></span></p>
+            <p><span>Texto dentro de un span</span></p>
+            <p><a href="#">Enlace3</a></p>
+            <p><span><a href="#">Enlace4</a></span></p>
+                                                                                                                                                                                                                                                                                                                                                                                            
+            <!--Caso Rojo-->
+            <p><a href="#">Enlace5</a></p>
+            <!--Caso Naranja-->
+            <p><span><a href="#">Enlace6</a></span></p>
+            <!--Caso Morado-->
+            <p><span>Texto dentro de un span</span></p>
+            <!--Caso Verde-->
+            <p><a href="#">Enlace7</a></p>
+            <!--Caso Naranja-->
+            <p><span><a href="#">Enlace8</a></span></p>
+
+        </section>
+    </body>
+    </html>
