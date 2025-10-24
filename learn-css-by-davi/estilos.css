@@ -1,0 +1,87 @@
+h1 {
+    color: blue;
+    font-family: Arial, sans-serif;
+    
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#parrafo2 {
+    color: pink;
+}
+
+
+/*
+-------------------------------------------------------------------
+COMBINACIONES DE SELECTORES 
+p a span em { color: blue; }
+p.notificacion, a.google, span.normal, em
+color: blue; }
+
+p a, span em { color: blue; }
+*/
+
+/* COMBINACIONES DE SELECTORES
+p a span em { color: blue; }
+p.notificacion, a.google, span.normal, em
+{ color: blue; }
+
+p a, span em { color: blue; }
+
+#normal a, span em { color: blue; }
+
+.notificacion a, span em { color: blue; }
+-----------------------------------------------------------------------
+*/
+
+/* Comentario en CSS */
+/* Selector de ID */
+/* Selector de Etiqueta */
+/* Propiedad: color, font-family, font-size, line-height */
+/* Valor: blue, Arial, 16px, 1.5 */
+/* Prioridad de estilos CSS */
+/* Inline CSS > Internal CSS > External CSS */
+/* Especificidad de selectores */
+/* ID > Clase > Etiqueta */
+/* Ejemplo de especificidad */
+/* #parrafo2 { color: pink; } tiene más prioridad que p { color:
+    gray; } */
+/* Uso de comentarios en CSS */
+/* Para documentar el código y explicar reglas */
+/* Buenas prácticas en CSS */
+/* Mantener el código organizado y legible */
+/* Utilizar nombres de clases e IDs descriptivos */
+/* Evitar el uso excesivo de selectores específicos */
+/* Mantener la consistencia en el estilo y formato */
+/* Herramientas para trabajar con CSS */
+/* Preprocesadores CSS: Sass, LESS */
+/* Frameworks CSS: Bootstrap, Tailwind CSS */
+/* Metodologías de organización CSS */
+/* BEM (Block Element Modifier) */
+/* SMACSS (Scalable and Modular Architecture for CSS) */
+/* OOCSS (Object-Oriented CSS) */
+/* Optimización del rendimiento CSS */
+/* Minimizar y comprimir archivos CSS */
+/* Cargar CSS de forma asíncrona */
+/* Evitar reglas CSS innecesarias */
+/* Uso de variables CSS */
+/* Mejora la mantenibilidad del código */
+:root {
+    --main-color: blue;
+    --secondary-color: gray;
+    --font-primary: Arial, sans-serif;
+    --font-secondary: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1 {
+    color: var(--main-color);
+    font-family: var(--font-primary);
+}
+p {
+    color: var(--secondary-color);
+    font-family: var(--font-secondary);
+}
+/* Fin del archivo estilos.css */
