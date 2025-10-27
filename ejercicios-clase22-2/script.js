@@ -31,3 +31,6 @@ if (parrafos.length >= 3) {
 let NenlacesP3 = document.getElementsByTagName("p")[2].getElementsByTagName("a").length;
 console.log("Número de enlaces del tercer párrafo (otra forma):", NenlacesP3);
 
+// querySelectorAll
+let NenlacesP3_qs = document.querySelectorAll("p:nth-of-type(3) a").length;
+console.log("Número de enlaces del tercer párrafo (querySelectorAll):", NenlacesP3_qs);
