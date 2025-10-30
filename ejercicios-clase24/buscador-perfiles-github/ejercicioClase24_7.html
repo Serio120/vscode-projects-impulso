@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Perfiles de GitHub</title>
+    <!-- Incluimos Tailwind CSS desde la CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Usamos la fuente "Inter" para un look más moderno -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Aplicamos la fuente Inter como fuente principal */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Tarjeta principal de la aplicación -->
+    <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg w-full max-w-md">
+        
+        <!-- Título -->
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
+            Buscador de Perfiles de GitHub
+        </h1>
+
+        <!-- Contenedor del formulario de búsqueda -->
+        <div class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 mb-6">
+            <!-- Input para el nombre de usuario -->
+            <input 
+                type="text" 
+                id="usernameInput" 
+                placeholder="Escribe un nombre de usuario..." 
+                class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            >
+            <!-- Botón de búsqueda -->
+            <button 
+                id="searchButton" 
+                class="p-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            >
+                Buscar
+            </button>
+        </div>
+
+        <!-- Área para mostrar los resultados -->
+        <div id="userInfo" class="mt-6 space-y-4">
+            <!-- El contenido del usuario se insertará aquí -->
+        </div>
+
+        <!-- Área para mostrar mensajes de error o estado -->
+        <div id="messageArea" class="mt-4 text-center"></div>
+
+    </div>
+
+    <script>
+        // --- Lógica de JavaScript ---
+
+        // 1. Obtener referencias a los elementos del DOM
+        const searchButton = document.getElementById('searchButton');
+        const usernameInput = document.getElementById('usernameInput');
+        const userInfoDiv = document.getElementById('userInfo');
+        const messageArea = document.getElementById('messageArea');
+
+        // 2. Definir la función principal para buscar al usuario
+        const fetchGitHubUser = async () => {
+            // Limpiar resultados y mensajes anteriores
+            userInfoDiv.innerHTML = '';
+            messageArea.innerHTML = '';
+
+            // Obtener el valor del input y quitar espacios en blanco
+            const username = usernameInput.value.trim();
+
+            // Validar si el campo está vacío
+            if (!username) {
+                messageArea.innerHTML = '<p class="text-red-600 font-semibold">Por favor, escribe un nombre de usuario.</p>';
+                return;
+            }
+
+            // Mostrar un mensaje de carga
+            userInfoDiv.innerHTML = '<p class="text-center text-gray-500">Cargando...</p>';
+
+            try {
+                // Construir la URL de la API
+                const apiUrl = `https://api.github.com/users/${username}`;
+
+                // Realizar la petición fetch
+                const response = await fetch(apiUrl);
+
+                // Comprobar si la respuesta no fue exitosa (ej. error 404)
+                if (!response.ok) {
+                    throw new Error(`Usuario no encontrado (Error ${response.status})`);
+                }
+
+                // Convertir la respuesta a JSON
+                const data = await response.json();
+
+                // --- Requisito: Imprimir en consola ---
+                console.log("--- Datos del Usuario (consola) ---");
+                console.log("Nombre:", data.name || data.login); // Si 'name' es null, usa 'login'
+                console.log("Número de repositorios:", data.public_repos);
+                console.log("Avatar (URL):", data.avatar_url);
+                console.log("-----------------------------------");
+
+                // Mostrar los datos en la página
+                displayUserData(data);
+
+            } catch (error) {
+                // Manejar errores (ej. usuario no encontrado, error de red)
+                console.error("Error al buscar el usuario:", error.message);
+                userInfoDiv.innerHTML = ''; // Limpiar el mensaje de "Cargando..."
+                messageArea.innerHTML = `<p class="text-red-600 font-semibold">${error.message}</p>`;
+            }
+        };
+
+        // 3. Definir la función para mostrar los datos en el DOM
+        const displayUserData = (data) => {
+            // Limpiar el contenido (quita el "Cargando...")
+            userInfoDiv.innerHTML = '';
+
+            // Crear los elementos del DOM
+            
+            // 1. Avatar (imagen)
+            const avatar = document.createElement('img');
+            avatar.src = data.avatar_url;
+            avatar.alt = `Avatar de ${data.name || data.login}`;
+            // Aplicamos clases de Tailwind para estilo
+            avatar.classList.add('w-32', 'h-32', 'rounded-full', 'mx-auto', 'border-4', 'border-blue-500', 'shadow-lg');
+
+            // 2. Nombre
+            // Usamos data.name, pero si es null, usamos data.login como alternativa
+            const name = data.name || data.login;
+            const nameElement = document.createElement('h2');
+            nameElement.textContent = name;
+            nameElement.classList.add('text-2xl', 'font-bold', 'text-center', 'text-gray-900', 'mt-4');
+
+            // (Extra) Enlace al perfil @login
+            const profileLink = document.createElement('a');
+            profileLink.href = data.html_url;
+            profileLink.textContent = `@${data.login}`;
+            profileLink.target = '_blank'; // Abre en una nueva pestaña
+            profileLink.classList.add('text-center', 'block', 'text-blue-600', 'hover:underline');
+
+            // 3. Número de repositorios
+            const reposElement = document.createElement('p');
+            reposElement.textContent = `Repositorios Públicos: ${data.public_repos}`;
+            reposElement.classList.add('text-lg', 'text-center', 'text-gray-700', 'mt-2');
+
+            // Añadir los nuevos elementos al div 'userInfo'
+            userInfoDiv.appendChild(avatar);
+            userInfoDiv.appendChild(nameElement);
+            userInfoDiv.appendChild(profileLink);
+            userInfoDiv.appendChild(reposElement);
+        };
+
+        // 4. Asignar los eventos a los botones
+        
+        // Al hacer clic en el botón "Buscar"
+        searchButton.addEventListener('click', fetchGitHubUser);
+
+        // (Extra) Permitir buscar al presionar "Enter" en el input
+        usernameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                fetchGitHubUser();
+            }
+        });
+
+    </script>
+</body>
+</html>
