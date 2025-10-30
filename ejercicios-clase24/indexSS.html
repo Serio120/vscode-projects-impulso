@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Manejadores semánticos</title>
+    <script language="JavaScript">
+        //Creamos una funcion externa 
+        function muestraMensaje() {
+            alert('Gracias por pinchar');
+        }
+
+        // Asigno la función externa al elemento 
+        window.onload = function () {
+            document.getElementById("pinchable").onclick = muestraMensaje;
+        } 
+    </script>
+</head>
+
+<body>
+    <input id="pinchable" type="button" value="Púlsame" />
+<!--       -->
+    <input id="pinchable2" type="button" value="Pinchame y verás" onclick="alert('Gracias por pinchar')" />
+</body>
+
+</html>

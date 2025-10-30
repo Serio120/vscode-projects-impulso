@@ -1,0 +1,11 @@
+div {
+  width: 300px;
+  height: 150px;
+  background: aquamarine;
+  border: 5px solid blue;
+}
+img {
+  width: 300px;
+  height: 150px;
+  display: inline;
+}

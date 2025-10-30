@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Manejadores semánticos</title>
+    <script language="JavaScript">
+        window.onload = function () {
+            var inputs = document.getElementsByTagName("input"); // Selecciona todos los inputs
+            for (let i = 0; i < inputs.length; i++) { // Recorre todos los inputs
+                if (inputs[i].type == "text" || inputs[i].type == "password") { // Si es texto o contraseña
+                    inputs[i].onfocus = resalta; // Selecciona el input
+
+                    inputs[i].onblur = noresalta; // Deselecciona el input
+                }
+            }
+        }
+        function resalta() {
+            this.style.backgroundColor = "khaki"; // Cambia el color de fondo
+            this.style.color = "red"; // Cambia el color del texto
+        }
+        function noresalta() {
+            this.style.backgroundColor = "white";
+            this.style.color = "black";
+        } 
+    </script>
+</head>
+
+<body>
+    <form>
+        Usuario <input type="text" id="usuario" /> <br>
+        Contraseña <input type="password" id="clave" /> <br>
+        <input type="button" value="Enviar" />
+    </form>
+</body>
+
+</html>

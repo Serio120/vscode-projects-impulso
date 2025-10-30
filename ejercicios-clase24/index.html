@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div onmouseout="fuera();" onmouseover="encima();" style="margin-left: 40%; margin-top: 20%;">Este es el DIV 1</div>
+
+
+    <div id="contenidos" style="width:250px; height:150px; border:thin solid silver">
+        Este es el DIV 2
+    </div>
+
+
+
+    <div id="contenidos" style="width:250px; height:150px; border:thin solid silver"
+        onmouseover="document.getElementById('contenidos').style.borderColor='black';"
+        onmouseout="document.getElementById('contenidos').style.borderColor='silver';">
+        Este es el DIV 3
+    </div>
+
+    <section onmouseover="this.style.borderColor='red';" onmouseout="this.style.borderColor='blue';">Esto es un SECTION</section>
+
+</body>
+
+</html>
